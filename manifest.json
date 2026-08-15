@@ -1,7 +1,7 @@
 {
-  "name": "Joynagar Store Data",
+  "name": "Store Data",
   "short_name": "Store Data",
-  "description": "Raidighi CCC Field Application Portal",
+  "description": "Store Data Field Application Portal",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ff6b6b",
@@ -9,12 +9,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
       "sizes": "512x512",
       "type": "image/png"
     }
