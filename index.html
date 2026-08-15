@@ -136,6 +136,7 @@
         .offline-dots span:nth-child(3) { animation-delay: 0.4s; }
 
         /* ── NOTIFICATION TOAST ── */
+<div id="notif-toast"></div>
         #notif-toast {
             position: fixed; top: 84px; left: 50%;
             transform: translateX(-50%) translateY(-20px);
@@ -182,6 +183,33 @@
         @keyframes fadeUp  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes slideUp { from{transform:translate(-50%,80px);opacity:0} to{transform:translate(-50%,0);opacity:1} }
         @keyframes pulse   { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+/* ── SPLASH SCREEN LOGIC ── */
+const splash   = document.getElementById('splash');
+const progBar  = document.getElementById('prog-bar');
+const progPct  = document.getElementById('prog-pct');
+const iframeEl = document.getElementById('gas-portal');
+
+let progress = 0;
+const progInterval = setInterval(() => {
+    // fake progress up to 85% while waiting for iframe
+    progress = Math.min(progress + Math.random() * 12, 85);
+    progBar.style.width = progress + '%';
+    progPct.textContent = Math.round(progress) + '%';
+}, 200);
+
+function hideSplash() {
+    clearInterval(progInterval);
+    progBar.style.width = '100%';
+    progPct.textContent = '100%';
+    setTimeout(() => {
+        splash.classList.add('fade-out');
+        setTimeout(() => splash.remove(), 600);
+    }, 200);
+}
+
+iframeEl.addEventListener('load', hideSplash);
+// safety fallback in case iframe 'load' never fires (e.g. blocked)
+setTimeout(hideSplash, 8000);
     </style>
 </head>
 <body>
