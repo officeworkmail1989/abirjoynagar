@@ -1,4 +1,4 @@
-const CACHE_NAME = 'store-data-v6';
+const CACHE_NAME = 'raidighi-ccc-v6';
 const ASSETS = ['index.html', 'manifest.json', 'offline.html'];
 
 const OFFLINE_HTML = `<!DOCTYPE html>
@@ -6,7 +6,7 @@ const OFFLINE_HTML = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offline — Store Data</title>
+<title>Offline — Raidighi CCC</title>
 <style>
   body { margin:0; background:#1a1a2e; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; font-family:sans-serif; text-align:center; padding:24px; box-sizing:border-box; }
   .icon  { font-size:72px; margin-bottom:20px; animation:pulse 2s ease-in-out infinite; }
@@ -70,7 +70,7 @@ self.addEventListener('fetch', e => {
 /* ── PUSH NOTIFICATIONS ── */
 self.addEventListener('push', e => {
     const data = e.data ? e.data.json() : {};
-    const title   = data.title   || 'Store Data';
+    const title   = data.title   || 'Raidighi CCC';
     const options = {
         body:    data.body    || 'নতুন আপডেট এসেছে!',
         icon:    data.icon    || 'https://cdn.aptoide.com/imgs/4/d/8/4d8c88cd950685bd2cf5aa33484f16a8_icon.png',
