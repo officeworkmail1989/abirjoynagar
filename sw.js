@@ -1,5 +1,5 @@
-const CACHE_NAME = 'store-data-v7';
-const ASSETS = ['index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'offline.html'];
+const CACHE_NAME = 'store-data-v6';
+const ASSETS = ['index.html', 'manifest.json', 'offline.html'];
 
 const OFFLINE_HTML = `<!DOCTYPE html>
 <html lang="bn">
@@ -73,8 +73,8 @@ self.addEventListener('push', e => {
     const title   = data.title   || 'Store Data';
     const options = {
         body:    data.body    || 'নতুন আপডেট এসেছে!',
-        icon:    data.icon    || 'icon-192.png',
-        badge:   data.badge   || 'icon-192.png',
+        icon:    data.icon    || 'https://cdn.aptoide.com/imgs/4/d/8/4d8c88cd950685bd2cf5aa33484f16a8_icon.png',
+        badge:   data.badge   || 'https://cdn.aptoide.com/imgs/4/d/8/4d8c88cd950685bd2cf5aa33484f16a8_icon.png',
         vibrate: [200, 100, 200],
         data:    { url: data.url || '/' }
     };
