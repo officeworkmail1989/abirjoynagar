@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Joynagar Store Data</title>
+    <title>Raidighi CCC</title>
 
     <meta name="theme-color" content="#ff6b6b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Store Data">
+    <meta name="apple-mobile-web-app-title" content="Raidighi CCC">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968853.png">
+    <link rel="apple-touch-icon" href="https://https://cdn-icons-png.flaticon.com/512/5968/5968853.png">
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -70,7 +70,8 @@
         .top-btn:hover  { background: rgba(255,255,255,0.35); transform: translateY(-1px); }
         .top-btn:active { transform: scale(0.9); }
 
-                /* ── IFRAME ── */
+        
+        /* ── IFRAME ── */
         #gas-portal {
             border: none; width: 100%; flex: 1;
             margin-top: 56px;
@@ -136,7 +137,6 @@
         .offline-dots span:nth-child(3) { animation-delay: 0.4s; }
 
         /* ── NOTIFICATION TOAST ── */
-<div id="notif-toast"></div>
         #notif-toast {
             position: fixed; top: 84px; left: 50%;
             transform: translateX(-50%) translateY(-20px);
@@ -177,39 +177,14 @@
         .ib-later { background: #f1f3f5; color: #555; }
         .ib-now   { background: linear-gradient(135deg,#ff6b6b,#ffd93d); color: #fff; }
 
-                /* ── KEYFRAMES ── */
+       
+
+        /* ── KEYFRAMES ── */
         @keyframes blink   { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.8)} }
         @keyframes logoPop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.07)} }
         @keyframes fadeUp  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes slideUp { from{transform:translate(-50%,80px);opacity:0} to{transform:translate(-50%,0);opacity:1} }
         @keyframes pulse   { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-/* ── SPLASH SCREEN LOGIC ── */
-const splash   = document.getElementById('splash');
-const progBar  = document.getElementById('prog-bar');
-const progPct  = document.getElementById('prog-pct');
-const iframeEl = document.getElementById('gas-portal');
-
-let progress = 0;
-const progInterval = setInterval(() => {
-    // fake progress up to 85% while waiting for iframe
-    progress = Math.min(progress + Math.random() * 12, 85);
-    progBar.style.width = progress + '%';
-    progPct.textContent = Math.round(progress) + '%';
-}, 200);
-
-function hideSplash() {
-    clearInterval(progInterval);
-    progBar.style.width = '100%';
-    progPct.textContent = '100%';
-    setTimeout(() => {
-        splash.classList.add('fade-out');
-        setTimeout(() => splash.remove(), 600);
-    }, 200);
-}
-
-iframeEl.addEventListener('load', hideSplash);
-// safety fallback in case iframe 'load' never fires (e.g. blocked)
-setTimeout(hideSplash, 8000);
     </style>
 </head>
 <body>
@@ -218,41 +193,54 @@ setTimeout(hideSplash, 8000);
     <!-- Top Bar -->
     <div id="top-bar">
         <div id="top-bar-left">
-            <span id="top-bar-title">Store Data</span>
+            <span id="top-bar-title">Raidighi CCC</span>
 
-                   </div>
+            <!-- Live / Offline Badge (Displayed inline without container style) -->
+            <div id="live-badge">
+                <div id="live-dot" class="online-pulse"></div>
+                <span id="live-label">LIVE</span>
+            </div>
+        </div>
 
         
-                <!-- Hard Reset Button -->
-        <div class="top-btn" id="reset-btn" onclick="hardReset()" title="অ্যাপ হার্ড রিসেট করুন">♻️</div>
-    </div>
 
     <!-- iFrame -->
     <iframe
         id="gas-portal"
         src="https://script.google.com/macros/s/AKfycbxRkxdnO8TbvJurTG1hFGlbMxLTjwXdg9WNIC3BaG4XrekVZn5t3_Kq-6DY0YjcsRzseA/exec"
         allow="camera; microphone; geolocation"
-        title="Store Data Portal">
+        title="Raidighi CCC Portal">
     </iframe>
 
     <!-- Splash Screen -->
     <div id="splash">
         <div class="s-logo-ring"><span class="s-logo-text">Nandy Enterprise</span></div>
-        <div class="s-name">Joynagar Store Data-Report</div>
-        <div class="s-sub">Connecting....</div>
+        <div class="s-name">Joynagar Store Database</div>
+        <div class="s-sub">Connecting…</div>
         <div class="s-progress-track">
             <div class="s-progress-bar" id="prog-bar"></div>
         </div>
         <div class="s-pct" id="prog-pct">0%</div>
     </div>
 
-    
+    <!-- Offline Fallback Page -->
+    <div id="offline-page">
+        <div class="offline-icon">📡</div>
+        <div class="offline-title">ইন্টারনেট নেই!</div>
+        <div class="offline-sub">আপনার নেটওয়ার্ক সংযোগ পাওয়া যাচ্ছে না।<br>WiFi বা Mobile Data চালু করে চেষ্টা করুন।</div>
+        <button class="offline-retry" onclick="retryConnection()">🔄 আবার চেষ্টা করুন</button>
+        <div class="offline-dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notif-toast">🔔 Notification চালু হয়েছে!</div>
+
     <!-- Install Banner -->
     <div id="install-banner">
         <div class="ib-row">
             <div class="ib-icon">📲</div>
             <div>
-                <div class="ib-title">Install Store Data</div>
+                <div class="ib-title">Raidighi CCC ইনস্টল করুন</div>
                 <div class="ib-desc">হোম স্ক্রিনে রাখুন — যেকোনো সময় এক ক্লিকে খুলুন</div>
             </div>
         </div>
@@ -276,6 +264,27 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+/* ── SPLASH PROGRESS BAR ── */
+const progBar = document.getElementById('prog-bar');
+const progPct = document.getElementById('prog-pct');
+const splash  = document.getElementById('splash');
+let pct = 0;
+const tick = setInterval(() => {
+    pct += Math.random() * 14 + 4;
+    if (pct >= 100) { pct = 100; clearInterval(tick); }
+    progBar.style.width = pct + '%';
+    progPct.textContent = Math.round(pct) + '%';
+}, 180);
+
+function hideSplash() {
+    if (!splash.classList.contains('fade-out')) {
+        pct = 100; progBar.style.width = '100%'; progPct.textContent = '100%';
+        clearInterval(tick);
+        setTimeout(() => splash.classList.add('fade-out'), 300);
+    }
+}
+document.getElementById('gas-portal').addEventListener('load', hideSplash);
+setTimeout(hideSplash, 6000);
 
 /* ── HARD RESET (clears settings/cache + forces latest update) ── */
 const resetBtn = document.getElementById('reset-btn');
@@ -314,6 +323,31 @@ async function hardReset() {
     }, 400);
 }
 
+/* ── WHATSAPP REDIRECT FUNCTION ── */
+function openWhatsApp() {
+    const phoneNumber = "919153637208";
+    const customText = encodeURIComponent("হ্যালো এডমিন, আমি Raidighi CCC পোর্টাল থেকে যোগাযোগ করছি।");
+    const waUrl = `https://wa.me/${phoneNumber}?text=${customText}`;
+    window.open(waUrl, "_blank");
+    showToast("💬 হোয়াটসঅ্যাপ খোলা হচ্ছে...");
+}
+/* ── NATIVE SHARE ── */
+function doShare() {
+    const shareData = {
+        title: 'Raidighi CCC',
+        text: 'Raidighi CCC Portal — শেয়ার করুন!',
+        url: window.location.href
+    };
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showToast('🔗 Link copied to clipboard!');
+        }).catch(() => {
+            showToast('📋 Link: ' + window.location.href);
+        });
+    }
+}
 
 function showToast(msg) {
     const t = document.getElementById('notif-toast');
@@ -322,6 +356,38 @@ function showToast(msg) {
     setTimeout(() => t.classList.remove('show'), 3000);
 }
 
+/* ── NETWORK STATUS → LIVE BADGE ── */
+const liveBadge = document.getElementById('live-badge');
+const liveDot   = document.getElementById('live-dot');
+const liveLabel = document.getElementById('live-label');
+const offPage   = document.getElementById('offline-page');
+
+function updateNet() {
+    if (navigator.onLine) {
+        liveBadge.classList.remove('offline-mode');
+        liveDot.classList.add('online-pulse');
+        liveDot.style.background = '#00ff88';
+        liveLabel.textContent = 'LIVE';
+        offPage.classList.remove('show');
+    } else {
+        liveBadge.classList.add('offline-mode');
+        liveDot.classList.remove('online-pulse');
+        liveDot.style.background = '#ff6b6b';
+        liveLabel.textContent = 'OFFLINE';
+        offPage.classList.add('show');
+    }
+}
+function retryConnection() {
+    if (navigator.onLine) { offPage.classList.remove('show'); document.getElementById('gas-portal').src += ''; }
+    else {
+        const btn = offPage.querySelector('.offline-retry');
+        btn.textContent = '⏳ চেক করছি…';
+        setTimeout(() => { btn.textContent = '🔄 আবার চেষ্টা করুন'; updateNet(); }, 2000);
+    }
+}
+window.addEventListener('online',  updateNet);
+window.addEventListener('offline', updateNet);
+updateNet();
 
 /* ── PWA INSTALL BANNER ── */
 const isStandalone =
