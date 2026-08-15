@@ -1,6 +1,6 @@
 {
-  "name": "Raidighi CCC",
-  "short_name": "Raidighi CCC",
+  "name": "Joynagar Store Data",
+  "short_name": "Store Data",
   "description": "Raidighi CCC Field Application Portal",
   "start_url": "index.html",
   "display": "standalone",
@@ -9,12 +9,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://cdn.aptoide.com/imgs/4/d/8/4d8c88cd950685bd2cf5aa33484f16a8_icon.png",
+      "src": "https://https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://cdn.aptoide.com/imgs/4/d/8/4d8c88cd950685bd2cf5aa33484f16a8_icon.png",
+      "src": "https://https://cdn-icons-png.flaticon.com/512/5968/5968853.png",
       "sizes": "512x512",
       "type": "image/png"
     }
