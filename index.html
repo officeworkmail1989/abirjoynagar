@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Store Data</title>
+    <title>Joynagar Store Data</title>
 
-    <meta name="theme-color" content="#0f766e">
+    <meta name="theme-color" content="#ff6b6b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Store Data">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-512.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968853.png">
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── THEME VARIABLES ── */
         :root {
-            --bg: #f3f7f7;
-            --top-bar-from: #0f766e;
-            --top-bar-to: #115e59;
+            --bg: #f7f9ff;
+            --top-bar-from: #ff6b6b;
+            --top-bar-to: #4d96ff;
             --text-on-bar: #fff;
             --net-online: #00b894;
             --net-offline: #e17055;
-            --offline-bg: #0f172a;
-            --offline-card: #1e293b;
+            --offline-bg: #1a1a2e;
+            --offline-card: #16213e;
             --fab-bg: rgba(255,255,255,0.18);
         }
         [data-theme="dark"] {
@@ -46,15 +46,15 @@
         /* ── TOP BAR ── */
         #top-bar {
             position: fixed; top: 0; left: 0; right: 0;
-            height: 58px;
-            background: linear-gradient(135deg, var(--top-bar-from), #14b8a6 52%, var(--top-bar-to));
+            height: 56px;
+            background: linear-gradient(90deg, var(--top-bar-from), #ffd93d 45%, #6bcb77 70%, var(--top-bar-to));
             display: flex; align-items: center;
             padding: 0 14px;
             z-index: 8000;
             gap: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
-        #top-bar-title { font-size: 18px; font-weight: 700; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        #top-bar-title { font-size: 17px; font-weight: 700; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
         #top-bar-left { display: flex; align-items: center; gap: 8px; flex: 1; }
         
         .top-btn {
@@ -70,10 +70,10 @@
         .top-btn:hover  { background: rgba(255,255,255,0.35); transform: translateY(-1px); }
         .top-btn:active { transform: scale(0.9); }
 
-        /* ── IFRAME ── */
+                /* ── IFRAME ── */
         #gas-portal {
             border: none; width: 100%; flex: 1;
-            margin-top: 58px;
+            margin-top: 56px;
             background: #fff;
             transition: filter 0.3s;
         }
@@ -82,29 +82,27 @@
         /* ── SPLASH SCREEN ── */
         #splash {
             position: fixed; inset: 0;
-            background: linear-gradient(145deg, #0f766e 0%, #0d9488 48%, #115e59 100%);
+            background: linear-gradient(145deg, #ff6b6b 0%, #ffd93d 38%, #6bcb77 68%, #4d96ff 100%);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             z-index: 9999;
-            transition: opacity 0.45s ease, transform 0.45s ease;
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
-        #splash.fade-out { opacity: 0; transform: scale(1.02); pointer-events: none; }
+        #splash.fade-out { opacity: 0; transform: scale(1.04); pointer-events: none; }
         .s-logo-ring {
-            width: 92px; height: 92px; border-radius: 24px;
-            background: rgba(255,255,255,0.14);
-            border: 1px solid rgba(255,255,255,0.3);
+            width: 96px; height: 96px; border-radius: 26px;
+            background: rgba(255,255,255,0.22);
+            border: 2.5px solid rgba(255,255,255,0.55);
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+            margin-bottom: 22px;
+            animation: logoPop 2.2s ease-in-out infinite;
         }
-        .s-logo-text { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -1px; }
-        .s-name { font-size: 25px; font-weight: 750; color: #fff; margin-bottom: 24px; }
-        .s-spinner {
-            width: 34px; height: 34px; border-radius: 50%;
-            border: 3px solid rgba(255,255,255,0.25);
-            border-top-color: #fff;
-            animation: spin 0.8s linear infinite;
-        }
+        .s-logo-text { font-size: 36px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+        .s-name { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px; animation: fadeUp 0.6s 0.15s both; }
+        .s-sub  { font-size: 14px; color: rgba(255,255,255,0.88); margin-bottom: 34px; animation: fadeUp 0.6s 0.3s both; }
+        .s-progress-track { width: 200px; height: 6px; background: rgba(255,255,255,0.28); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+        .s-progress-bar   { height: 100%; width: 0%; background: #fff; border-radius: 10px; transition: width 0.12s linear; }
+        .s-pct { font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 600; }
 
         /* ── OFFLINE FALLBACK PAGE ── */
         #offline-page {
@@ -178,8 +176,7 @@
         .ib-later { background: #f1f3f5; color: #555; }
         .ib-now   { background: linear-gradient(135deg,#ff6b6b,#ffd93d); color: #fff; }
 
-        /* ── KEYFRAMES ── */
-        @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+                /* ── KEYFRAMES ── */
         @keyframes blink   { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.8)} }
         @keyframes logoPop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.07)} }
         @keyframes fadeUp  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
@@ -193,10 +190,12 @@
     <!-- Top Bar -->
     <div id="top-bar">
         <div id="top-bar-left">
-            <span id="top-bar-title">Joynagar Store Data-Report</span>
-        </div>
+            <span id="top-bar-title">Store Data</span>
 
-        <!-- Hard Reset Button -->
+                   </div>
+
+        
+                <!-- Hard Reset Button -->
         <div class="top-btn" id="reset-btn" onclick="hardReset()" title="অ্যাপ হার্ড রিসেট করুন">♻️</div>
     </div>
 
@@ -205,32 +204,27 @@
         id="gas-portal"
         src="https://script.google.com/macros/s/AKfycbxRkxdnO8TbvJurTG1hFGlbMxLTjwXdg9WNIC3BaG4XrekVZn5t3_Kq-6DY0YjcsRzseA/exec"
         allow="camera; microphone; geolocation"
-        title="Raidighi CCC Portal">
+        title="Store Data Portal">
     </iframe>
 
     <!-- Splash Screen -->
     <div id="splash">
-        <div class="s-logo-ring"><span class="s-logo-text">SD</span></div>
-        <div class="s-name">Store Data</div>
-        <div class="s-spinner" aria-label="Loading"></div>
-    </div>    <!-- Offline Fallback Page -->
-    <div id="offline-page">
-        <div class="offline-icon">📡</div>
-        <div class="offline-title">ইন্টারনেট নেই!</div>
-        <div class="offline-sub">আপনার নেটওয়ার্ক সংযোগ পাওয়া যাচ্ছে না।<br>WiFi বা Mobile Data চালু করে চেষ্টা করুন।</div>
-        <button class="offline-retry" onclick="retryConnection()">🔄 আবার চেষ্টা করুন</button>
-        <div class="offline-dots"><span></span><span></span><span></span></div>
+        <div class="s-logo-ring"><span class="s-logo-text">Nandy Enterprise</span></div>
+        <div class="s-name">Joynagar Store Data-Report</div>
+        <div class="s-sub">Connecting....</div>
+        <div class="s-progress-track">
+            <div class="s-progress-bar" id="prog-bar"></div>
+        </div>
+        <div class="s-pct" id="prog-pct">0%</div>
     </div>
 
-    <!-- Notification Toast -->
-    <div id="notif-toast">🔔 Notification চালু হয়েছে!</div>
-
+    
     <!-- Install Banner -->
     <div id="install-banner">
         <div class="ib-row">
-            <div class="ib-icon">SD</div>
+            <div class="ib-icon">📲</div>
             <div>
-                <div class="ib-title">Store Data ইনস্টল করুন</div>
+                <div class="ib-title">Install Store Data</div>
                 <div class="ib-desc">হোম স্ক্রিনে রাখুন — যেকোনো সময় এক ক্লিকে খুলুন</div>
             </div>
         </div>
@@ -254,15 +248,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-/* ── SPLASH SCREEN ── */
-const splash = document.getElementById('splash');
-function hideSplash() {
-    if (!splash.classList.contains('fade-out')) {
-        setTimeout(() => splash.classList.add('fade-out'), 180);
-    }
-}
-document.getElementById('gas-portal').addEventListener('load', hideSplash);
-setTimeout(hideSplash, 6000);
 
 /* ── HARD RESET (clears settings/cache + forces latest update) ── */
 const resetBtn = document.getElementById('reset-btn');
@@ -301,6 +286,7 @@ async function hardReset() {
     }, 400);
 }
 
+
 function showToast(msg) {
     const t = document.getElementById('notif-toast');
     t.textContent = msg;
@@ -308,25 +294,6 @@ function showToast(msg) {
     setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-/* ── NETWORK STATUS ── */
-const offPage = document.getElementById('offline-page');
-function updateNet() {
-    offPage.classList.toggle('show', !navigator.onLine);
-}
-function retryConnection() {
-    if (navigator.onLine) {
-        offPage.classList.remove('show');
-        const portal = document.getElementById('gas-portal');
-        portal.src = portal.src;
-    } else {
-        const btn = offPage.querySelector('.offline-retry');
-        btn.textContent = '⏳ চেক করছি…';
-        setTimeout(() => { btn.textContent = '🔄 আবার চেষ্টা করুন'; updateNet(); }, 2000);
-    }
-}
-window.addEventListener('online', updateNet);
-window.addEventListener('offline', updateNet);
-updateNet();
 
 /* ── PWA INSTALL BANNER ── */
 const isStandalone =
